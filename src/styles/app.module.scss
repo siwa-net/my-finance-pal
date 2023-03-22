@@ -1,0 +1,10 @@
+.ContentWrapper {
+  --content-width: 100%;
+
+  @media (min-width: 800px) {
+    --content-width: clamp(800px, 60vw, 1280px);
+  }
+
+  margin-inline: auto;
+  width: var(--content-width);
+}
