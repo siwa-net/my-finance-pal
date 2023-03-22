@@ -1,8 +1,15 @@
 .Container {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 16px;
     padding: 32px;
     border-radius: 4px;
     box-shadow: var(--box-shadow-lev-1);
+}
+
+.Title {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 1ch;
 }

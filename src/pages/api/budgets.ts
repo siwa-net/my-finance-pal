@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { budgetFactory } from './factories/buget.factories';
+import { budgetFactory } from './factories/budget.factories';
 import { Budget } from '../../generated/openapi';
 
 import type { NextApiRequest, NextApiResponse } from 'next';

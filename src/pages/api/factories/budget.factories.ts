@@ -13,6 +13,6 @@ export const budgetFactory = Factory.define<Budget>(({ sequence }) => {
         endDate: '2023-03-21T18:49:13.620Z',
         name: 'Budget-' + sequence,
         limit,
-        spent: limit * Math.random(),
+        spent: limit - Math.min(limit, sequence * 50),
     };
 });
