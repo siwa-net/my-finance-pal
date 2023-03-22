@@ -6,17 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint -- --fix",
+    "codegen": "rm -rf ./src/generated/openapi; openapi --input ./api.yaml --output ./src/generated/openapi"
   },
   "dependencies": {
+    "@sindresorhus/is": "^5.3.0",
+    "@tanstack/react-query": "^4.28.0",
     "@types/node": "18.15.5",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "fishery": "^2.2.2",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.59.3",
     "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "openapi-typescript-codegen": "^0.23.0",
+    "prettier": "2.8.6"
   }
 }
