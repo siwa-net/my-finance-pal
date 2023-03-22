@@ -9,6 +9,10 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
+  --box-shadow-color: #ddd;
+  --box-shadow-lev-1: 0px 2px 8px 0px var(--box-shadow-color);
+  --box-shadow-lev-2: 0px 2px 16px 0px var(--box-shadow-color);
+
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -97,10 +101,4 @@ a {
   html {
     /* color-scheme: dark; */
   }
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
 }
