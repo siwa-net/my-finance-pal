@@ -1,11 +1,14 @@
 .ContentWrapper {
   --content-width: 100%;
+  --padding-container: 32px;
+  --padding-inline: var(--padding-container);
 
-  @media (min-width: 800px) {
-    --content-width: clamp(800px, 60vw, 1280px);
+  @media (min-width: 980px) {
+    --content-width: clamp(980px, 60vw, 1280px);
+    --padding-inline: 0px;
   }
 
   margin-inline: auto;
   width: var(--content-width);
-  padding: 32px 0px;
+  padding: var(--padding-container) var(--padding-inline);
 }

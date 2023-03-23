@@ -1,6 +1,6 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
+  --border-radius: 4px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
@@ -9,7 +9,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --box-shadow-color: #ddd;
+  --box-shadow-color: #44444488;
   --box-shadow-lev-1: 0px 2px 8px 0px var(--box-shadow-color);
   --box-shadow-lev-2: 0px 2px 16px 0px var(--box-shadow-color);
 
@@ -43,7 +43,8 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
-  --primary-color: #84844c
+  --primary-color: #84844c;
+  --paper-white-color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -92,6 +93,14 @@ body {
 }
 
 body {
+  background-image: url("/money-bg.jpg");
+  background-color: #9f7d9f;
+  background-blend-mode: screen;
+  backdrop-filter: saturate(50%) blur(3px) sepia(10%);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 a {

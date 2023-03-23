@@ -4,7 +4,7 @@ import { Budget } from '../../generated/openapi';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-const budgetList = budgetFactory.buildList(5);
+const budgetList = budgetFactory.buildList(12);
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse<Budget[]>) {
     res.status(200).json(budgetList);
