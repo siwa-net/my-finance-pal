@@ -4,7 +4,7 @@
   --padding-inline: var(--padding-container);
 
   @media (min-width: 980px) {
-    --content-width: clamp(980px, 60vw, 1280px);
+    --content-width: clamp(980px, 60vw, var(--max-width));
     --padding-inline: 0px;
   }
 

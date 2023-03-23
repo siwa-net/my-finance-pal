@@ -43,8 +43,12 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
+  /* Custom Colors */
   --primary-color: #84844c;
   --paper-white-color: #fff;
+
+  /* Custom Dimensions */
+  --container-padding: 32px;
 }
 
 @media (prefers-color-scheme: dark) {

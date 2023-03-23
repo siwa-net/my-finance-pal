@@ -8,7 +8,7 @@ import styles from './Navigation.module.scss';
 export const Navigation: FunctionComponent = () => (
     <nav className={styles.Container}>
         <FontAwesomeIcon icon={faSackDollar} size={'2x'} />
-        <h1>My Finance Pal</h1>
+        <big>My Finance Pal</big>
         <FontAwesomeIcon icon={faUserGear} size={'2x'} />
     </nav>
 );

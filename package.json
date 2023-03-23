@@ -25,7 +25,6 @@
     "eslint-config-next": "13.2.4",
     "fishery": "^2.2.2",
     "next": "13.2.4",
-    "number-precision": "^1.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-sweet-progress": "^1.1.2",
