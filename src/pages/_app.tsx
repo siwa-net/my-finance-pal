@@ -15,7 +15,7 @@ import type { AppProps } from 'next/app';
 config.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] });
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({ defaultOptions: { queries: { refetchOnWindowFocus: false } } });
 
 export default function App({ Component, pageProps }: AppProps) {
     return (

@@ -1,19 +1,19 @@
 import is from '@sindresorhus/is';
 
-import { Budget } from '../../../../generated/openapi';
-import { budgetList } from '../index';
+import { BudgetSummary } from '../../../../generated/openapi';
+import { budgetSummaryFactory } from '../../factories/budget.factories';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Budget>) {
+const budgetSummaryMock = budgetSummaryFactory.buildList(8);
+
+export default function handler(req: NextApiRequest, res: NextApiResponse<BudgetSummary>) {
     const { query, method } = req;
     const id = query.id as string;
 
     switch (method) {
         case 'GET':
-            const targetBudget = budgetList.find(({ id: budgetId }) => budgetId === id);
-
-            console.log(budgetList.map(({ id }) => id));
+            const targetBudget = budgetSummaryMock.find(({ id: budgetId }) => budgetId === id);
 
             if (is.undefined(targetBudget)) {
                 res.status(404).end();

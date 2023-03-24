@@ -5,16 +5,7 @@ import { BudgetDetail } from '../../components/BudgetDetail/BudgetDetail';
 
 export default function BudgetPage() {
     const router = useRouter();
-
     const { id } = router.query;
 
-    if (is.nonEmptyString(id)) {
-        return (
-            <>
-                <BudgetDetail id={id} />
-            </>
-        );
-    }
-
-    return null;
+    return !is.string(id) ? null : <BudgetDetail id={id} />;
 }

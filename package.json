@@ -29,7 +29,8 @@
     "react-dom": "18.2.0",
     "react-sweet-progress": "^1.1.2",
     "sass": "^1.59.3",
-    "typescript": "5.0.2"
+    "typescript": "5.0.2",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.8.0",

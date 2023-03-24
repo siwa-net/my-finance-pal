@@ -4,7 +4,6 @@ import { budgetFactory } from '../factories/budget.factories';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-// TODO fix this setup as on HMR this is created as well again which results in invalid data on detail pages (404)
 export const budgetList = budgetFactory.buildList(8);
 budgetFactory.rewindSequence();
 

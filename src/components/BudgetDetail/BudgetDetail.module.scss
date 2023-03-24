@@ -1,3 +1,43 @@
-.Container {
-    
+.Headline1 {
+    position: relative;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.ArrowBack {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.Details {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.DetailsContainer {
+    display: flex;
+    gap: var(--grid-gap);
+    flex-wrap: wrap;
+}
+
+.DetailsContainerLeft {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gap);
+    flex-basis: 300px;
+}
+
+.DetailsContainerRight {
+    flex: 0;
+    flex-basis: 300px;
+    align-self: stretch;
+
+    & > *:first-child:last-child {
+        height: 100%;
+    }
 }

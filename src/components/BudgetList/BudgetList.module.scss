@@ -6,6 +6,6 @@
 
 .ListItems {
     display: grid;
-    gap: 16px;
+    gap: var(--grid-gap);
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
