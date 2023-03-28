@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import React from 'react';
 
 import { BudgetList } from '../components/BudgetList/BudgetList';
 

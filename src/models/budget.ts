@@ -2,16 +2,20 @@ import { z } from 'zod';
 
 import { optionalDateSchema } from './_generic-schemas';
 
-export const budgetModelSchema = z.object({
-    id: z.string(),
+export const newBudgetModelSchema = z.object({
     name: z.string(),
     limit: z.number().positive(),
-    spent: z.number().positive(),
     startDate: optionalDateSchema,
     endDate: optionalDateSchema,
 });
 
+export const budgetModelSchema = newBudgetModelSchema.extend({
+    id: z.string(),
+    spent: z.number().positive(),
+});
+
 export type BudgetModel = z.infer<typeof budgetModelSchema>;
+export type NewBudgetModel = z.infer<typeof newBudgetModelSchema>;
 
 export const mapToBudgetModel = (data: unknown): BudgetModel | null => {
     try {
