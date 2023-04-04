@@ -8,10 +8,13 @@ export const useAddBudget = (): UseMutationResult<Budget, unknown, NewBudgetMode
     const invalidateBudgetQuery = useInvalidateQuery();
 
     return useMutation(
-        (budget: NewBudgetModel) => {
-            console.log('budget: ', budget);
-            return BudgetsService.createBudget(budget);
-        },
+        (budget: NewBudgetModel) =>
+            BudgetsService.createBudget({
+                name: budget.name,
+                limit: budget.limit,
+                startDate: budget.startDate?.toISOString(),
+                endDate: budget.endDate?.toISOString(),
+            }),
         {
             onSuccess: () => invalidateBudgetQuery(),
         },

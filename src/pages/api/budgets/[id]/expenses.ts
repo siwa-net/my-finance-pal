@@ -1,26 +1,23 @@
 import is from '@sindresorhus/is';
+import { NextApiRequest, NextApiResponse } from 'next';
 
+import { budgetSummaryMock } from './summary';
 import { BudgetSummary } from '../../../../generated/openapi';
-import { budgetSummaryFactory } from '../../factories/budget.factories';
-
-import type { NextApiRequest, NextApiResponse } from 'next';
-
-export const budgetSummaryMock = budgetSummaryFactory.buildList(8);
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<BudgetSummary>) {
-    const { query, method } = req;
+    const { query, method, body } = req;
     const id = query.id as string;
 
     switch (method) {
-        case 'GET':
-            const targetBudget = budgetSummaryMock.find(({ id: budgetId }) => budgetId === id);
-
-            if (is.undefined(targetBudget)) {
+        case 'POST':
+            const budgetToUpdate = budgetSummaryMock.find((budget) => budget.id === id);
+            if (is.undefined(budgetToUpdate)) {
                 res.status(404).end();
                 break;
             }
 
-            res.status(200).json(targetBudget);
+            budgetToUpdate.expenses.push({ ...body, id: `${id}-${body.description}-${body.date}` });
+            res.status(200).json(budgetToUpdate);
             break;
         default:
             res.setHeader('Allow', ['GET']);

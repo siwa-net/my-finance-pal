@@ -8,14 +8,16 @@ export const budgetList = budgetFactory.buildList(8);
 budgetFactory.rewindSequence();
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse<Budget[]>) {
-    switch (_req.method) {
+    const { method, body } = _req;
+    switch (method) {
         case 'POST':
-            const newBudget: Budget = { ..._req.body, id: _req.body.name, spent: 0 };
+            const newBudget: Budget = { ...body, id: body.name, spent: 0 };
             budgetList.push(newBudget);
             return res.status(200).json(budgetList);
         case 'GET':
-        default:
-            console.log('budgetList: ', budgetList);
             return res.status(200).json(budgetList);
+        default:
+            res.setHeader('Allow', ['GET', 'POST']);
+            res.status(405).end(`Method ${method} Not Allowed`);
     }
 }

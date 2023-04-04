@@ -8,7 +8,7 @@ import type { BudgetSummary } from '../models/BudgetSummary';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
-import {NewBudgetModel} from "../../../models/budget";
+import { NewBudget } from "../models/NewBudget";
 
 export class BudgetsService {
 
@@ -19,9 +19,8 @@ export class BudgetsService {
      * @throws ApiError
      */
     public static createBudget(
-        requestBody: NewBudgetModel,
+        requestBody: NewBudget,
     ): CancelablePromise<Budget> {
-        console.log('requestBody: ', requestBody);
         return __request(OpenAPI, {
             method: 'POST',
             url: '/budgets',

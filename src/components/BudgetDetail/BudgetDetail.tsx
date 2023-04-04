@@ -7,9 +7,9 @@ import { FunctionComponent } from 'react';
 import styles from './BudgetDetail.module.scss';
 import { datesToDayRange, dateToFormattedDay } from '../../helpers/date';
 import { useBudgetSummaryQuery } from '../../hooks/useBudgetSummaryQuery';
-import { Button } from '../_design/Button/Button';
 import { Card } from '../_design/Card/Card';
 import { DetailWithTitle } from '../_design/DetailWithTitle/DetailWithTitle';
+import { AddExpenseForm } from '../AddExpenseForm';
 
 type BudgetDetailProps = {
     id: string;
@@ -56,8 +56,7 @@ export const BudgetDetail: FunctionComponent<BudgetDetailProps> = ({ id }) => {
             </div>
             <div className={styles.DetailsContainerRight}>
                 <Card>
-                    <h3>New Expense</h3>
-                    <Button onClick={() => {}}>Add Expense</Button>
+                    <AddExpenseForm id={id} />
                 </Card>
             </div>
         </section>

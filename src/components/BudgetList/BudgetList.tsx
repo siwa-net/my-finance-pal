@@ -8,6 +8,7 @@ import styles from './BudgetList.module.scss';
 import { useBudgets } from '../../hooks/useBudgets';
 import { useToggle } from '../../hooks/useToggle';
 import { Button } from '../_design/Button/Button';
+import { Card } from '../_design/Card/Card';
 import { AddBudgetForm } from '../AddBudgetForm/AddBudgetForm';
 import { BudgetItem } from '../BudgetItem/BudgetItem';
 
@@ -22,7 +23,11 @@ export const BudgetList: FC = () => {
             <Button onClick={toggleShowAddBudget}>
                 Add a budget <FontAwesomeIcon icon={showAddBudget ? faMinus : faPlus} />
             </Button>
-            {showAddBudget && <AddBudgetForm />}
+            {showAddBudget && (
+                <Card>
+                    <AddBudgetForm />
+                </Card>
+            )}
             <div className={styles.ListItems}>
                 {budgets.map((budget) => (
                     <BudgetItem key={budget.id} budget={budget} />
