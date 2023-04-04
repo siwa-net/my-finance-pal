@@ -11,7 +11,7 @@ export const newBudgetModelSchema = z.object({
 
 export const budgetModelSchema = newBudgetModelSchema.extend({
     id: z.string(),
-    spent: z.number().positive(),
+    spent: z.number().nonnegative(),
 });
 
 export type BudgetModel = z.infer<typeof budgetModelSchema>;

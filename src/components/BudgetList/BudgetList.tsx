@@ -1,11 +1,12 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAngry } from '@fortawesome/free-regular-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import styles from './BudgetList.module.scss';
 import { useBudgets } from '../../hooks/useBudgets';
+import { useToggle } from '../../hooks/useToggle';
 import { Button } from '../_design/Button/Button';
 import { AddBudgetForm } from '../AddBudgetForm/AddBudgetForm';
 import { BudgetItem } from '../BudgetItem/BudgetItem';
@@ -14,17 +15,12 @@ library.add(faAngry);
 
 export const BudgetList: FC = () => {
     const { data: budgets = [] } = useBudgets();
-    const [showAddBudget, setShowAddBudget] = useState(false);
-
-    const handleAddBudgetClick = () => {
-        // TODO create logic for adding budget
-        setShowAddBudget(true);
-    };
+    const [showAddBudget, toggleShowAddBudget] = useToggle(false);
 
     return (
         <section className={styles.Container}>
-            <Button onClick={handleAddBudgetClick}>
-                Add a budget <FontAwesomeIcon icon={faPlus} />
+            <Button onClick={toggleShowAddBudget}>
+                Add a budget <FontAwesomeIcon icon={showAddBudget ? faMinus : faPlus} />
             </Button>
             {showAddBudget && <AddBudgetForm />}
             <div className={styles.ListItems}>

@@ -1,0 +1,17 @@
+.Wrapper {
+  display: block;
+  position: relative;
+}
+
+.Error {
+  position: absolute;
+  bottom: -16px;
+  left: 2px;
+  font-size: 12px;
+  color: red;
+  padding: 0 8px;
+}
+
+.DatePicker {
+  width: 100%
+}

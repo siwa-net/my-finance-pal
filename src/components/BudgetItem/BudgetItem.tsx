@@ -17,7 +17,7 @@ type BudgetItemProps = { budget: BudgetModel };
 export const BudgetItem: FC<BudgetItemProps> = ({ budget }) => {
     const { id, spent, name, limit, startDate, endDate } = budget;
 
-    const spentPercentage = Math.trunc((100 * spent) / limit);
+    const remainingBudget = 100 - Math.trunc((100 * spent) / limit);
 
     const isValidDateRange = is.date(startDate) && is.date(endDate) && endDate > startDate;
 
@@ -29,7 +29,7 @@ export const BudgetItem: FC<BudgetItemProps> = ({ budget }) => {
                 </h3>
 
                 <DetailWithTitle title={'Remaining Budget'}>
-                    <ProgressBar percentage={spentPercentage} />
+                    <ProgressBar percentage={remainingBudget} />
                 </DetailWithTitle>
 
                 {isValidDateRange && (

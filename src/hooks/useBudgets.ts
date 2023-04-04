@@ -1,9 +1,9 @@
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
 
 import { Budget, BudgetsService } from '../generated/openapi';
 import { BudgetModel, mapToBudgetModel } from '../models/budget';
 
-const budgetSymbol = Symbol('getBudgets');
+const budgetsQueryKey = ['/budgets'];
 
 const selectValidBudgetModelsFromBudgetDtos = (budgetDtos: Budget[]) =>
     budgetDtos.reduce<BudgetModel[]>((budgetModels, budgetDto) => {
@@ -12,9 +12,14 @@ const selectValidBudgetModelsFromBudgetDtos = (budgetDtos: Budget[]) =>
         return mappedBudget ? [...budgetModels, mappedBudget] : budgetModels;
     }, []);
 
+export const useInvalidateQuery = () => {
+    const queryClient = useQueryClient();
+    return () => queryClient.invalidateQueries(budgetsQueryKey);
+};
+
 export const useBudgets = (): UseQueryResult<BudgetModel[]> =>
     useQuery({
-        queryKey: [budgetSymbol],
+        queryKey: budgetsQueryKey,
         queryFn: () => BudgetsService.getBudgets(),
         select: selectValidBudgetModelsFromBudgetDtos,
     });

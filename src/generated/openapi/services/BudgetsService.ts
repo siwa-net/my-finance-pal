@@ -4,11 +4,11 @@
 import type { Budget } from '../models/Budget';
 import type { BudgetId } from '../models/BudgetId';
 import type { BudgetSummary } from '../models/BudgetSummary';
-import type { NewBudget } from '../models/NewBudget';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
+import {NewBudgetModel} from "../../../models/budget";
 
 export class BudgetsService {
 
@@ -19,8 +19,9 @@ export class BudgetsService {
      * @throws ApiError
      */
     public static createBudget(
-        requestBody: NewBudget,
+        requestBody: NewBudgetModel,
     ): CancelablePromise<Budget> {
+        console.log('requestBody: ', requestBody);
         return __request(OpenAPI, {
             method: 'POST',
             url: '/budgets',
@@ -85,5 +86,4 @@ export class BudgetsService {
             },
         });
     }
-
 }
