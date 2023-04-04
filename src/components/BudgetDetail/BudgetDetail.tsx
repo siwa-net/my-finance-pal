@@ -16,14 +16,13 @@ type BudgetDetailProps = {
 };
 
 export const BudgetDetail: FunctionComponent<BudgetDetailProps> = ({ id }) => {
-    const budgetQuery = useBudgetSummaryQuery(id);
-    const budget = budgetQuery.data;
+    const { data: budget, isFetching } = useBudgetSummaryQuery(id);
 
-    if (is.nullOrUndefined(budget) || budgetQuery.isFetching) {
+    if (is.nullOrUndefined(budget) || isFetching) {
         return null;
     }
 
-    const { startDate, endDate, name, limit, transactions } = budget;
+    const { startDate, endDate, name, limit, expenses } = budget;
 
     const isValidDateRange = is.date(startDate) && is.date(endDate) && startDate < endDate;
 
@@ -45,11 +44,11 @@ export const BudgetDetail: FunctionComponent<BudgetDetailProps> = ({ id }) => {
                     </div>
                 </Card>
                 <Card>
-                    <h3>Transactions</h3>
+                    <h3>Expenses</h3>
                     <ul>
-                        {transactions.map((transaction) => (
-                            <li key={transaction.id}>
-                                {dateToFormattedDay(transaction.date)} - {transaction.description}
+                        {expenses.map((expense) => (
+                            <li key={expense.id}>
+                                {dateToFormattedDay(expense.date)} - {expense.description}
                             </li>
                         ))}
                     </ul>
@@ -57,8 +56,8 @@ export const BudgetDetail: FunctionComponent<BudgetDetailProps> = ({ id }) => {
             </div>
             <div className={styles.DetailsContainerRight}>
                 <Card>
-                    <h3>New Transaction</h3>
-                    <Button onClick={() => {}}>Add Transaction</Button>
+                    <h3>New Expense</h3>
+                    <Button onClick={() => {}}>Add Expense</Button>
                 </Card>
             </div>
         </section>

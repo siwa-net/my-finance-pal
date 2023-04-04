@@ -3,10 +3,10 @@
 /* eslint-disable */
 
 import type { BudgetId } from './BudgetId';
-import type { Transaction } from './Transaction';
+import type { Expense } from './Expense';
 
 /**
- * Summary of the whole budget including all transactions
+ * Summary of the whole budget including all expenses
  */
 export type BudgetSummary = {
     id: BudgetId;
@@ -27,8 +27,8 @@ export type BudgetSummary = {
      */
     endDate?: string;
     /**
-     * All transactions of the budget
+     * All expenses of the budget
      */
-    transactions: Array<Transaction>;
+    expenses: Array<Expense>;
 };
 

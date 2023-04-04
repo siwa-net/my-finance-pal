@@ -3,6 +3,6 @@
 /* eslint-disable */
 
 /**
- * Unique identifier of a transaction
+ * Unique identifier of an expense
  */
-export type TransactionId = string;
+export type ExpenseId = string;

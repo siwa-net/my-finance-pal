@@ -18,7 +18,7 @@ export type Budget = {
      */
     limit: number;
     /**
-     * The summed up spent amount of all transaction of that budget
+     * The summed up spent amount of all expenses of that budget
      */
     spent: number;
     /**

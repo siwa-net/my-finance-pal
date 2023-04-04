@@ -46,7 +46,7 @@ export class BudgetsService {
     }
 
     /**
-     * Get a budget summary including all transactions for a given ID
+     * Get a budget summary including all expenses for a given ID
      * @param budgetId The UUID of the budget
      * @returns BudgetSummary OK
      * @throws ApiError
@@ -67,7 +67,7 @@ export class BudgetsService {
     }
 
     /**
-     * Delete a budget including all transactions
+     * Delete a budget including all expenses
      * @param budgetId The UUID of the budget
      * @returns void
      * @throws ApiError

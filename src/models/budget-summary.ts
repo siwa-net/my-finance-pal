@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
 import { optionalDateSchema } from './_generic-schemas';
-import { transactionSchema } from './transaction';
+import { expenseSchema } from './expense';
 
 export const budgetSummaryModelSchema = z.object({
     id: z.string(),
     name: z.string(),
     limit: z.number().positive(),
-    transactions: z.array(transactionSchema),
+    expenses: z.array(expenseSchema),
     startDate: optionalDateSchema,
     endDate: optionalDateSchema,
 });

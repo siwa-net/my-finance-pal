@@ -2,19 +2,19 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { TransactionId } from './TransactionId';
+import type { ExpenseId } from './ExpenseId';
 
 /**
  * An expense or income related to a single budget
  */
-export type Transaction = {
-    id: TransactionId;
+export type Expense = {
+    id: ExpenseId;
     /**
-     * Description of the transaction
+     * Description of the expense
      */
     description: string;
     /**
-     * Amount of money contained in the transaction
+     * Amount of money contained in the expense
      */
     amount: number;
     date: string;

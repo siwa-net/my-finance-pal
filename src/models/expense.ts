@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const transactionSchema = z.object({
+export const expenseSchema = z.object({
     id: z.string(),
     description: z.string(),
     amount: z.number().positive(),
@@ -10,4 +10,4 @@ export const transactionSchema = z.object({
         .transform((dateTime) => new Date(dateTime)),
 });
 
-export type TransactionModel = z.infer<typeof transactionSchema>;
+export type ExpenseModel = z.infer<typeof expenseSchema>;

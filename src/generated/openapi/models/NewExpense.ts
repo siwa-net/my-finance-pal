@@ -3,15 +3,15 @@
 /* eslint-disable */
 
 /**
- * A new transaction to be created
+ * A new expense to be created
  */
-export type NewTransaction = {
+export type NewExpense = {
     /**
-     * Description of the transaction
+     * Description of the expense
      */
     description: string;
     /**
-     * Amount of money contained in the transaction
+     * Amount of money contained in the expense
      */
     amount: number;
     date: string;

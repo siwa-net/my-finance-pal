@@ -1,6 +1,6 @@
 import { Factory } from 'fishery';
 
-import { transactionFactory } from './transaction.factories';
+import { expenseFactory } from './expense.factories';
 import { Budget, BudgetSummary } from '../../../generated/openapi';
 
 export const budgetFactory = Factory.define<Budget>(({ sequence }) => {
@@ -19,8 +19,8 @@ export const budgetFactory = Factory.define<Budget>(({ sequence }) => {
 export const budgetSummaryFactory = Factory.define<BudgetSummary>(({ sequence }) => {
     const limit = 200 + (sequence - 1) * 50;
 
-    const transactions = transactionFactory.buildList(5);
-    transactionFactory.rewindSequence();
+    const expenses = expenseFactory.buildList(5);
+    expenseFactory.rewindSequence();
 
     return {
         id: `budget-mock-id-${sequence}`,
@@ -28,6 +28,6 @@ export const budgetSummaryFactory = Factory.define<BudgetSummary>(({ sequence })
         endDate: '2023-03-21T18:49:13.620Z',
         name: 'Budget-' + sequence,
         limit,
-        transactions: transactions,
+        expenses,
     };
 });
