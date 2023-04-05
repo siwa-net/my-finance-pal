@@ -29,6 +29,7 @@ export const AddBudgetForm = () => {
                         variant="standard"
                         type="text"
                         label="Budget name"
+                        required
                         {...register('name', { required: true })}
                         error={!!errors.name}
                     />
@@ -40,7 +41,8 @@ export const AddBudgetForm = () => {
                         variant="standard"
                         type="number"
                         label="Limit"
-                        {...register('limit', { min: 0, required: true })}
+                        required
+                        {...register('limit', { min: 0, required: true, valueAsNumber: true })}
                         error={!!errors.limit}
                     />
                 </Grid>

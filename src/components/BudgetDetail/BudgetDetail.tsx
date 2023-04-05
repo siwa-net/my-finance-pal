@@ -1,15 +1,17 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { List, ListItem, ListItemText } from '@mui/material';
 import is from '@sindresorhus/is';
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
 
 import styles from './BudgetDetail.module.scss';
+import { ExpenseDescription } from './ExpenseDescription';
 import { datesToDayRange, dateToFormattedDay } from '../../helpers/date';
 import { useBudgetSummaryQuery } from '../../hooks/useBudgetSummaryQuery';
 import { Card } from '../_design/Card/Card';
 import { DetailWithTitle } from '../_design/DetailWithTitle/DetailWithTitle';
-import { AddExpenseForm } from '../AddExpenseForm';
+import { AddExpenseForm } from '../AddExpenseForm/AddExpenseForm';
 
 type BudgetDetailProps = {
     id: string;
@@ -45,13 +47,18 @@ export const BudgetDetail: FunctionComponent<BudgetDetailProps> = ({ id }) => {
                 </Card>
                 <Card>
                     <h3>Expenses</h3>
-                    <ul>
+                    <List>
                         {expenses.map((expense) => (
-                            <li key={expense.id}>
-                                {dateToFormattedDay(expense.date)} - {expense.description}
-                            </li>
+                            <ListItem key={expense.id}>
+                                <ListItemText
+                                    primary={
+                                        <ExpenseDescription amount={expense.amount} description={expense.description} />
+                                    }
+                                    secondary={dateToFormattedDay(expense.date)}
+                                />
+                            </ListItem>
                         ))}
-                    </ul>
+                    </List>
                 </Card>
             </div>
             <div className={styles.DetailsContainerRight}>

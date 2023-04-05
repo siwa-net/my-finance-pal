@@ -17,7 +17,7 @@ type BudgetItemProps = { budget: BudgetModel };
 export const BudgetItem: FC<BudgetItemProps> = ({ budget }) => {
     const { id, spent, name, limit, startDate, endDate } = budget;
 
-    const remainingBudget = 100 - Math.trunc((100 * spent) / limit);
+    const spentBudget = Math.trunc((100 * spent) / limit);
 
     const isValidDateRange = is.date(startDate) && is.date(endDate) && endDate > startDate;
 
@@ -28,12 +28,12 @@ export const BudgetItem: FC<BudgetItemProps> = ({ budget }) => {
                     {name} <FontAwesomeIcon icon={faCoins} />
                 </h3>
 
-                <DetailWithTitle title={'Remaining Budget'}>
-                    <ProgressBar percentage={remainingBudget} />
+                <DetailWithTitle title="Spent Budget">
+                    <ProgressBar percentage={spentBudget} />
                 </DetailWithTitle>
 
                 {isValidDateRange && (
-                    <DetailWithTitle title={'Period'}>
+                    <DetailWithTitle title="Period">
                         <p>{datesToDayRange(startDate, endDate)}</p>
                     </DetailWithTitle>
                 )}

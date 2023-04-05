@@ -1,9 +1,10 @@
 import { Button, Grid, TextField } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { DatePicker } from './DatePicker/DatePicker';
-import { useAddExpense } from '../hooks/useAddExpense';
-import { NewExpenseModel } from '../models/expense';
+import { resolver } from './resolver';
+import { useAddExpense } from '../../hooks/useAddExpense';
+import { NewExpenseModel } from '../../models/expense';
+import { DatePicker } from '../DatePicker/DatePicker';
 
 type AddExpenseFormProps = {
     id: string;
@@ -14,9 +15,9 @@ export const AddExpenseForm = ({ id }: AddExpenseFormProps) => {
         register,
         handleSubmit,
         reset,
-        formState: { errors },
+        formState: { errors, isDirty, isValid },
         control,
-    } = useForm<NewExpenseModel>();
+    } = useForm<NewExpenseModel>({ resolver, defaultValues: { date: new Date() } });
 
     const { mutate: addExpense, isLoading } = useAddExpense(id);
 
@@ -38,6 +39,7 @@ export const AddExpenseForm = ({ id }: AddExpenseFormProps) => {
                             type="text"
                             label="Description"
                             {...register('description', { required: true })}
+                            error={!!errors.description}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -57,7 +59,7 @@ export const AddExpenseForm = ({ id }: AddExpenseFormProps) => {
                         type="submit"
                         size="large"
                         variant="contained"
-                        disabled={isLoading || Object.keys(errors).length > 0}
+                        disabled={isLoading || Object.keys(errors).length > 0 || !isDirty || !isValid}
                     >
                         Add Expense
                     </Button>

@@ -4,19 +4,12 @@ import { z } from 'zod';
 
 import { NewBudgetModel } from '../../models/budget';
 
-const budgetFormSchema = z
-    .object({
-        name: z.string(),
-        limit: z.string(),
-        startDate: z.date().optional(),
-        endDate: z.date().optional(),
-    })
-    .transform<NewBudgetModel>((formValues) => ({
-        ...formValues,
-        startDate: formValues.startDate,
-        endDate: formValues.endDate,
-        limit: parseInt(formValues.limit),
-    }));
+const budgetFormSchema = z.object({
+    name: z.string(),
+    limit: z.number(),
+    startDate: z.date().optional(),
+    endDate: z.date().optional(),
+});
 
 export const resolver: Resolver<NewBudgetModel> = async (values: unknown) => {
     const parseResult = budgetFormSchema.safeParse(values);
